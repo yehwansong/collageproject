@@ -30,7 +30,8 @@ position: relative;
         z-index: 100000;
         position: absolute;
         height: 8vh;
-        width: 100%;opacity: 0.5;
+        width: 100%;
+        opacity: 0.5;
         pointer-events: none;
     }
     .face_subwrap_l .grad_top{
@@ -51,14 +52,31 @@ position: relative;
     }
     .face_2,
     .face_6{
-    margin-bottom: -3.7vw;
+        margin-bottom: -3.7vw;
         z-index: 100;
-min-height: 6.2vw}
+        min-height: 6.2vw}
     .face_3,
     .face_7{
         transform-origin: right top;
         height: 0;
-min-height: 0
+        min-height: 0
+    }
+    .face_5{
+        font-size: 0
+    }
+    .face_5 img{
+        width: 100%;
+        height: 100%
+    }
+    .face_8.animate,
+    .face_4.animate{
+        animation: bounce 1s;
+    }
+    .face_7.animate,
+    .face_3.animate{
+        height: 10vh !important;
+        margin-bottom: -10vh !important;
+        z-index: -1
     }
     .face_4.face_l,
     .face_8.face_l,
@@ -77,18 +95,60 @@ min-height: 0
         transform-origin: right bottom;
     }
     .face_r{
-
-background-position: -50vw top
+        background-position: -50vw top
     }
     .face_3{
         z-index: 15
     }
     .face_4{
-    z-index: 10;
-    box-shadow: 0vh 0vh 10vh #f21601;}
+        z-index: 10;
+        /*box-shadow: 0vh 0vh 10vh #f21601;*/
+    }
     .face_4.face_l{
-    z-index: 10;
-    box-shadow: 0vh 0vh 10vh #00b7eb;}
+        z-index: 10;
+        /*box-shadow: 0vh 0vh 10vh #00b7eb;*/
+    }
+@keyframes bounce {
+  0% {
+    transform:translateY(100%);
+  }
+  5% {
+    transform:translateY(100%);
+  }
+  15% {
+    transform:translateY(0);
+  }
+  30% {
+    transform:translateY(50%);
+  }
+  40% {
+    transform:translateY(0%);
+  }
+  50% {
+    transform:translateY(30%);
+  }
+  70% {
+    transform:translateY(0%);
+  }
+  80% {
+    transform:translateY(15%);
+  }
+  90% {
+    transform:translateY(0%);
+  }
+  95% {
+    transform:translateY(7%);
+  }
+  97% {
+    transform:translateY(0%);
+  }
+  99% {
+    transform:translateY(3%);
+  }
+  100% {
+    transform:translateY(0);
+  }
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="jquery.easing.min.js"></script>
@@ -106,11 +166,11 @@ document.addEventListener('touchmove', function(e) {
         return c - $.easing.easeOutBounce (x, d-t, 0, c, d) + b;
     };
     $.easing.easeOutBounce = function (x, t, b, c, d) {
-        if ((t/=d) < (1/2.75)) {
+        if ((t/=d) <    (1/2.75)) {
             return c*(7.5625*t*t) + b;
-        } else if (t < (2/2.75)) {
+        } else if (t <  (2/2.75)) {
             return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
-        } else if (t < (2.5/2.75)) {
+        } else if (t <  (2.5/2.75)) {
             return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
         } else {
             return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
@@ -143,6 +203,7 @@ document.addEventListener('touchmove', function(e) {
         var ratio_r = 1
         var ratio_l = 1
         function getstart(e){
+            $('.animate').removeClass('animate')
             if(pointerEventToXY(e)[1]<org_s_2_pos && pointerEventToXY(e)[1]>=0){
                 start = 1
             }
@@ -295,14 +356,18 @@ document.addEventListener('touchmove', function(e) {
                     $('.face_5').css({'transform':'skew(0deg)'})
                     $('.face_7').css({'transform':'skew(0deg)'})
                     $('.face_8').css({'transform':'translateX(0px)'})
-                    $('.face_1').animate({'height':org_s_1_hei}, 500, 'easeOutBounce')
-                    $('.face_2').animate({'height':org_s_2_hei}, 500, 'easeOutBounce')
-                    $('.face_3').animate({'height':0}          , 500, 'easeOutBounce')
-                    $('.face_4').animate({'height':org_s_4_hei}, 500, 'easeOutBounce')
-                    $('.face_5').animate({'height':org_s_5_hei}, 500, 'easeOutBounce')
-                    $('.face_6').animate({'height':org_s_6_hei}, 500, 'easeOutBounce')
-                    $('.face_7').animate({'height':0}          , 500, 'easeOutBounce')
-                    $('.face_8').animate({'height':org_s_8_hei}, 500, 'easeOutBounce')
+                    $('.face_1').animate({'height':org_s_1_hei}, 100)
+                    $('.face_2').animate({'height':org_s_2_hei}, 100)
+                    $('.face_3').animate({'height':0}          , 100)
+                    $('.face_4').animate({'height':org_s_4_hei}, 100)
+                    $('.face_5').animate({'height':org_s_5_hei}, 100)
+                    $('.face_6').animate({'height':org_s_6_hei}, 100)
+                    $('.face_7').animate({'height':0}          , 100)
+                    $('.face_8').animate({'height':org_s_8_hei}, 100)
+                    $('.face_4').addClass('animate')
+                    $('.face_8').addClass('animate')
+                    $('.face_3').addClass('animate')
+                    $('.face_7').addClass('animate')
             // $('.face_subwrap_r .grad_top_b').css({'top':$('.face_subwrap_r .face_4').offset().top})
             // $('.face_subwrap_l .grad_top_b').css({'top':$('.face_subwrap_l .face_4').offset().top})
         })
@@ -330,7 +395,10 @@ document.addEventListener('touchmove', function(e) {
     <img src="pic/scan161/n_2_m.png" class="face face_3 face_l">
     <img src="pic/scan161/n_3.png"   class="face face_4 face_l">
     <!-- <div class="grad_top grad_top_b"></div> -->
-    <img src="pic/scan161/n_1.png"   class="face face_5 face_l">
+    <div class="face face_5 face_l">
+        <div class="grad_top"></div>
+        <img src="pic/scan161/n_1.png">
+    </div>
     <img src="pic/scan161/n_2.png"   class="face face_6 face_l">
     <img src="pic/scan161/n_2_m.png" class="face face_7 face_l">
     <img src="pic/scan161/n_3.png"   class="face face_8 face_l">
@@ -342,7 +410,10 @@ document.addEventListener('touchmove', function(e) {
     <img src="pic/scan161/n_2_m.png" class="face face_3 face_r">
     <img src="pic/scan161/n_3.png"   class="face face_4 face_r">
     <!-- <div class="grad_top grad_top_b"></div> -->
-    <img src="pic/scan161/n_1.png"   class="face face_5 face_r">
+    <div class="face face_5 face_r">
+        <div class="grad_top"></div>
+        <img src="pic/scan161/n_1.png">
+    </div>
     <img src="pic/scan161/n_2.png"   class="face face_6 face_r">
     <img src="pic/scan161/n_2_m.png" class="face face_7 face_r">
 
