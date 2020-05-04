@@ -13,7 +13,8 @@
     body,html{
         height: 100%;
         width: 100vw;
-        background: black
+        background: black;
+        pointer-events: none;
 
     }
     .face{
@@ -50,8 +51,13 @@ position: relative;
         transform-origin: top;
         transition: transform 0.3s
     }
+    .face_1,
+    .face_5{
+        height: 23.323vw
+    }
     .face_2,
     .face_6{
+        height: 25.4024vw;
         margin-bottom: -3.7vw;
         z-index: 100;
         min-height: 6.2vw}
@@ -60,6 +66,10 @@ position: relative;
         transform-origin: right top;
         height: 0;
         min-height: 0
+    }
+    .face_4,
+    .face_8{
+        height: 20.7378vw;
     }
     .face_5{
         font-size: 0
@@ -70,7 +80,7 @@ position: relative;
     }
     .face_8.animate,
     .face_4.animate{
-        animation: bounce 1s;
+        animation: bounce 0.8s;
     }
     .face_7.animate,
     .face_3.animate{
@@ -131,19 +141,19 @@ position: relative;
     transform:translateY(0%);
   }
   80% {
-    transform:translateY(15%);
+    transform:translateY(20%);
   }
   90% {
     transform:translateY(0%);
   }
   95% {
-    transform:translateY(7%);
+    transform:translateY(10%);
   }
   97% {
     transform:translateY(0%);
   }
   99% {
-    transform:translateY(3%);
+    transform:translateY(5%);
   }
   100% {
     transform:translateY(0);
@@ -182,26 +192,83 @@ document.addEventListener('touchmove', function(e) {
         var w = window.innerWidth
         var ex,ey
         var init = [0,0]
-        var org_s_1_hei = $('.face_1').outerHeight()
-        var org_s_2_hei = $('.face_2').outerHeight()
-        var org_s_3_hei = $('.face_3').outerHeight()
-        var org_s_4_hei = $('.face_4').outerHeight()
-        var org_s_5_hei = $('.face_5').outerHeight()
-        var org_s_6_hei = $('.face_6').outerHeight()
-        var org_s_7_hei = $('.face_7').outerHeight()
-        var org_s_8_hei = $('.face_8').outerHeight()
-        var org_s_1_pos = $('.face_1').offset().top+ $('.face_1').outerHeight()
-        var org_s_2_pos = $('.face_2').offset().top+ $('.face_2').outerHeight()
-        var org_s_3_pos = $('.face_3').offset().top+ $('.face_3').outerHeight()
-        var org_s_4_pos = $('.face_4').offset().top+ $('.face_4').outerHeight()
-        var org_s_5_pos = $('.face_5').offset().top+ $('.face_5').outerHeight()
-        var org_s_6_pos = $('.face_6').offset().top+ $('.face_6').outerHeight()
-        var org_s_7_pos = $('.face_7').offset().top+ $('.face_7').outerHeight()
-        var org_s_8_pos = $('.face_8').offset().top+ $('.face_8').outerHeight()
+        var org_s_1_hei
+        var org_s_2_hei
+        var org_s_3_hei
+        var org_s_4_hei
+        var org_s_5_hei
+        var org_s_6_hei
+        var org_s_7_hei
+        var org_s_8_hei
+        var org_s_1_pos
+        var org_s_2_pos
+        var org_s_3_pos
+        var org_s_4_pos
+        var org_s_5_pos
+        var org_s_6_pos
+        var org_s_7_pos
+        var org_s_8_pos
+        start_in()
         var a = 0
         var start
         var ratio_r = 1
         var ratio_l = 1
+        function start_in(){
+            console.log('hl;ekj')
+            org_s_1_hei = $('.face_1').outerHeight()
+            org_s_2_hei = $('.face_2').outerHeight()
+            org_s_3_hei = $('.face_3').outerHeight()
+            org_s_4_hei = $('.face_4').outerHeight()
+            org_s_5_hei = $('.face_5').outerHeight()
+            org_s_6_hei = $('.face_6').outerHeight()
+            org_s_7_hei = $('.face_7').outerHeight()
+            org_s_8_hei = $('.face_8').outerHeight()
+            org_s_1_pos = $('.face_1').offset().top+ $('.face_1').outerHeight()
+            org_s_2_pos = $('.face_2').offset().top+ $('.face_2').outerHeight()
+            org_s_3_pos = $('.face_3').offset().top+ $('.face_3').outerHeight()
+            org_s_4_pos = $('.face_4').offset().top+ $('.face_4').outerHeight()
+            org_s_5_pos = $('.face_5').offset().top+ $('.face_5').outerHeight()
+            org_s_6_pos = $('.face_6').offset().top+ $('.face_6').outerHeight()
+            org_s_7_pos = $('.face_7').offset().top+ $('.face_7').outerHeight()
+            org_s_8_pos = $('.face_8').offset().top+ $('.face_8').outerHeight()
+            console.log(org_s_1_hei)
+            console.log(org_s_2_hei)
+            console.log(org_s_3_hei)
+            console.log(org_s_4_hei)
+            console.log(org_s_5_hei)
+            console.log(org_s_6_hei)
+            console.log(org_s_7_hei)
+            console.log(org_s_8_hei)
+            console.log(org_s_1_pos)
+            console.log(org_s_2_pos)
+            console.log(org_s_3_pos)
+            console.log(org_s_4_pos)
+            console.log(org_s_5_pos)
+            console.log(org_s_6_pos)
+            console.log(org_s_7_pos)
+            console.log(org_s_8_pos)
+            setTimeout(function(){
+                if( org_s_1_hei>0&&
+                    org_s_2_hei>0&&
+                    org_s_4_hei>0&&
+                    org_s_5_hei>0&&
+                    org_s_6_hei>0&&
+                    org_s_8_hei>0&&
+                    org_s_1_pos>0&&
+                    org_s_2_pos>0&&
+                    org_s_3_pos>0&&
+                    org_s_4_pos>0&&
+                    org_s_5_pos>0&&
+                    org_s_6_pos>0&&
+                    org_s_7_pos>0&&
+                    org_s_8_pos>0){
+                    $('body').css({'pointer-events':'auto'})
+                }else{
+                    start_in()
+                }
+
+            },300)
+        }
         function getstart(e){
             $('.animate').removeClass('animate')
             if(pointerEventToXY(e)[1]<org_s_2_pos && pointerEventToXY(e)[1]>=0){
@@ -226,8 +293,6 @@ document.addEventListener('touchmove', function(e) {
                 ratio_r = 1
                 ratio_l = 1
             }
-            console.log(ratio_r)
-            console.log(ratio_l)
         }
         $('body').on('mousedown touchstart', function(e){
             getstart(e)
@@ -356,14 +421,14 @@ document.addEventListener('touchmove', function(e) {
                     $('.face_5').css({'transform':'skew(0deg)'})
                     $('.face_7').css({'transform':'skew(0deg)'})
                     $('.face_8').css({'transform':'translateX(0px)'})
-                    $('.face_1').animate({'height':org_s_1_hei}, 100)
-                    $('.face_2').animate({'height':org_s_2_hei}, 100)
-                    $('.face_3').animate({'height':0}          , 100)
-                    $('.face_4').animate({'height':org_s_4_hei}, 100)
-                    $('.face_5').animate({'height':org_s_5_hei}, 100)
-                    $('.face_6').animate({'height':org_s_6_hei}, 100)
-                    $('.face_7').animate({'height':0}          , 100)
-                    $('.face_8').animate({'height':org_s_8_hei}, 100)
+                    $('.face_1').css({'height':org_s_1_hei}, 100)
+                    $('.face_2').css({'height':org_s_2_hei}, 100)
+                    $('.face_3').css({'height':0}          , 100)
+                    $('.face_4').css({'height':org_s_4_hei}, 100)
+                    $('.face_5').css({'height':org_s_5_hei}, 100)
+                    $('.face_6').css({'height':org_s_6_hei}, 100)
+                    $('.face_7').css({'height':0}          , 100)
+                    $('.face_8').css({'height':org_s_8_hei}, 100)
                     $('.face_4').addClass('animate')
                     $('.face_8').addClass('animate')
                     $('.face_3').addClass('animate')
